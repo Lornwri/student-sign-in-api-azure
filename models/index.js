@@ -1,23 +1,12 @@
-const { Sequelize, DataTypes } = require('sequelize')
-const configJson = require('../config.json')
-const createStudentModel = require('./student')
+const { Sequelize, DataTypes } = require('sequelize');
+const createStudentModel = require('./student'); // Adjust path as needed
 
-const env = process.env.NODE_ENV || 'development'
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './database.sqlite', // Path to your SQLite database
+});
 
-const dbPassword = process.env.DB_PASSWORD
+// Create the Student model
+const Student = createStudentModel(sequelize, DataTypes);
 
-const config = configJson[env]
-config.password = dbPassword
-
-const sequelize = new Sequelize(config)
-
-const database = {
-    sequelize: sequelize,
-    Sequelize: Sequelize,
-}
-
-const studentModel = createStudentModel(sequelize, DataTypes)
-const studentModelName = studentModel.name
-database[studentModelName] = studentModel
-
-module.exports = database
+module.exports = { sequelize, Student };

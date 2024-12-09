@@ -4,13 +4,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING, // Sequelize STRING data type
             allowNull: false,
             validate: {
-                notEmpty: true,
+                notEmpty: true, // Ensure the field is not empty
             },
         },
         starID: {
-            type: DataTypes.STRING, // Sequelize STRING data type
+            type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
+            unique: true, // Ensure the value is unique
             validate: {
                 notEmpty: true,
             },
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         present: {
             type: DataTypes.BOOLEAN, // Sequelize BOOLEAN data type
             allowNull: false,
-            defaultValue: false,
+            defaultValue: false, // Default value for the field
         },
     });
 
