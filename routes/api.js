@@ -6,10 +6,13 @@ const router = express.Router();
 // Get all students
 router.get('/students', async (req, res, next) => {
     try {
-        const students = await Student.findAll({ order: ['present', 'name'] });
+        const students = await Student.findAll({
+            order: ['name', 'ASC']
+        });
         res.json(students);
     } catch (err) {
-        next(err);
+        console.error('Error fetching students:', err);
+        res.status(500).send('Error');
     }
 });
 
