@@ -3,10 +3,7 @@ import { ref, computed } from "vue";
 
 export const useStudentStore = defineStore("student", () => {
     // Initial student list
-    const studentList = ref([
-        { name: "A. Student", starID: "aa1234aa", present: false },
-        { name: "B. Student", starID: "bb1234bb", present: false },
-    ]);
+    const studentList = ref([]);
 
     // Most recent student
     const mostRecentStudent = ref({});

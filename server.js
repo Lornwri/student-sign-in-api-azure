@@ -1,7 +1,13 @@
 const express = require('express');
 const apiRoutes = require('./routes/api'); // Ensure the correct path to api.js
+const path = require('path');
 
+//creates application server
 const app = express();
+
+const staticFilePath = path.join(__dirname, 'client', 'dist');
+const staticFiles = express.static(staticFilePath);
+app.use('/', staticFiles); //request of the home page
 
 app.use(express.json()); // Parse JSON bodies
 app.use('/api', apiRoutes); // Mount the API routes
