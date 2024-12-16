@@ -5,6 +5,6 @@ const app = express();
 
 //start server
 
-const server = app.listen(process.env.PORT || 3000, function() {
+const server = app.listen(process.env.PORT || 8080, function() {
     console.log('Server is running on port', server.address().port);
 })
